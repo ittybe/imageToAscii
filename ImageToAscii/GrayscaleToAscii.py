@@ -50,21 +50,20 @@ class GrayscaleToAscii:
         return self.arrayAscii.astype('|S1').tostring().decode('utf-8')
     
     def save(self, Asciipath, times_dublicate = 1):
-        file = open(Asciipath, 'w')
-        arraySave = self.arrayAscii.astype('|S1').tostring().decode('utf-8')
-        file.write(arraySave)
-        # if times_dublicate != 1:
-        #     for col in arraySave:
-        #         for char in col:
-        #             # dont dublicate '\n' char
-        #             if char == '\n':
-        #                 file.write(char)
-        #                 break
-        #             for i in range(times_dublicate):
-        #                 file.write(char)
-        # else:
-        #     file.write(arraySave)
-        file.close()
+        with open(Asciipath, 'w') as file:
+            arraySave = self.arrayAscii.astype('|S1').tostring().decode('utf-8')
+            file.write(arraySave)
+            # if times_dublicate != 1:
+            #     for col in arraySave:
+            #         for char in col:
+            #             # dont dublicate '\n' char
+            #             if char == '\n':
+            #                 file.write(char)
+            #                 break
+            #             for i in range(times_dublicate):
+            #                 file.write(char)
+            # else:
+            #     file.write(arraySave)
 
 if __name__ == "__main__":
     start_time = time.time()
